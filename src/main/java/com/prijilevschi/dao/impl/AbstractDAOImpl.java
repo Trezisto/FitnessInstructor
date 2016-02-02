@@ -4,44 +4,53 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
+import javax.persistence.TypedQuery;
 
 import com.prijilevschi.dao.AbstractDAO;
+import com.prijilevschi.model.AbstractEntity;
 
-@Repository
-public class AbstractDAOImpl<T> implements AbstractDAO<T> {
+public class AbstractDAOImpl<T extends AbstractEntity> implements AbstractDAO<T> {
 	@PersistenceContext
-	EntityManager entityManager;	
+	private EntityManager entityManager;	
+	
+	private final Class<T> typeParameterClass;
+	
+	public AbstractDAOImpl(Class<T> typeParameterClass) {
+        this.typeParameterClass = typeParameterClass;
+    }
 	
 	@Override
-	public void persist(T entity) {
-		// TODO Auto-generated method stub
-		
+	public void save(T entity) {
+		if(entity.getId() == null) {
+			entityManager.persist(entity);
+		} else {
+			entityManager.merge(entity);
+		}
 	}
 
 	@Override
 	public T findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		T entity = entityManager.find(typeParameterClass, id);
+		return entity;
 	}
 
 	@Override
 	public List<T> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String hqlSelect = "from " + typeParameterClass.getName();
+		TypedQuery<T> query = entityManager.createQuery(hqlSelect, typeParameterClass);
+		return query.getResultList(); 
 	}
 
 	@Override
 	public void delete(T entity) {
-		// TODO Auto-generated method stub
-		
+		entityManager.remove(entity);		
 	}
 
 	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
+	public int deleteAll() {
+		String hqlDelete = "DELETE " + typeParameterClass.getName();
+		int deletedRows = entityManager.createQuery(hqlDelete).executeUpdate();
+		return deletedRows;
 	}
 	
 }
