@@ -9,14 +9,14 @@ import javax.persistence.TypedQuery;
 import com.prijilevschi.dao.AbstractDAO;
 import com.prijilevschi.model.AbstractEntity;
 
-public class AbstractDAOImpl<T extends AbstractEntity> implements AbstractDAO<T> {
+public abstract class AbstractDAOImpl<T extends AbstractEntity> implements AbstractDAO<T> {
 	@PersistenceContext
-	private EntityManager entityManager;	
+	protected EntityManager entityManager;	
 	
-	private final Class<T> typeParameterClass;
+	protected final Class<T> typeClass;
 	
 	public AbstractDAOImpl(Class<T> typeParameterClass) {
-        this.typeParameterClass = typeParameterClass;
+        this.typeClass = typeParameterClass;
     }
 	
 	@Override
@@ -30,14 +30,14 @@ public class AbstractDAOImpl<T extends AbstractEntity> implements AbstractDAO<T>
 
 	@Override
 	public T findById(Long id) {
-		T entity = entityManager.find(typeParameterClass, id);
+		T entity = entityManager.find(typeClass, id);
 		return entity;
 	}
 
 	@Override
 	public List<T> findAll() {
-		String hqlSelect = "from " + typeParameterClass.getName();
-		TypedQuery<T> query = entityManager.createQuery(hqlSelect, typeParameterClass);
+		String hqlSelect = "from " + typeClass.getName();
+		TypedQuery<T> query = entityManager.createQuery(hqlSelect, typeClass);
 		return query.getResultList(); 
 	}
 
@@ -48,7 +48,7 @@ public class AbstractDAOImpl<T extends AbstractEntity> implements AbstractDAO<T>
 
 	@Override
 	public int deleteAll() {
-		String hqlDelete = "DELETE " + typeParameterClass.getName();
+		String hqlDelete = "DELETE " + typeClass.getName();
 		int deletedRows = entityManager.createQuery(hqlDelete).executeUpdate();
 		return deletedRows;
 	}
