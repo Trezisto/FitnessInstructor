@@ -115,6 +115,9 @@
         <span class="sr-only">Next</span>
       </a>
     </div>	
+    <button type="button" class="btn btn-lg btn-success">Sign up</button>
+    <button type="button" class="btn btn-lg btn-success">Log in</button>
+    
 	<p>About</p>
 	<p>Contact</p>
 </body>

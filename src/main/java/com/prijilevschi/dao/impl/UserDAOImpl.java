@@ -11,7 +11,7 @@ import com.prijilevschi.dao.UserDAO;
 import com.prijilevschi.model.User;
 import com.prijilevschi.utils.Utils;
 
-@Repository
+@Repository("userDao")
 public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO {
 	private final String USERNAME = "username";
 	

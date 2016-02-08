@@ -1,5 +1,17 @@
 @CHARSET "UTF-8";
 
+@font-face {
+    font-family: 'glyphicons-halflings-regular';
+    src: url('../fonts/glyphicons-halflings-regular'),
+		 url('../fonts/glyphicons-halflings-regular.eot') format('eot'),
+         url('../fonts/glyphicons-halflings-regular.woff') format('woff'),
+         url('../fonts/glyphicons-halflings-regular.woff') format('woff2'),
+         url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+         url('../fonts/glyphicons-halflings-regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .logoCarousel img {
 	width: auto;
 	height: 500px;
