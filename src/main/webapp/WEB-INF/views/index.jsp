@@ -7,6 +7,8 @@
 <link href="${bootstrap}" rel="stylesheet" />
 <spring:url value="/css/bootstrap-theme.min.css" var="bootstrapTheme" />
 <link href="${bootstrapTheme}" rel="stylesheet" />
+<spring:url value="/css/main.css" var="mainCSS" />
+<link href="${mainCSS}" rel="stylesheet" />
 
 <spring:url value="/js/jquery-2.2.0.min.js" var="jQuery" />
 <script src="${jQuery}"></script>
@@ -16,6 +18,8 @@
 <script src="${angularJS}"></script>
 
 <spring:url value="/images/header1.png" htmlEscape="true" var="header1"/>
+<spring:url value="/images/header2.png" htmlEscape="true" var="header2"/>
+<spring:url value="/images/header3.png" htmlEscape="true" var="header3"/>
 </head>
 <body>
 	<!-- NAVIGATION BAR -->
@@ -71,8 +75,8 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+        <div class="item active logoCarousel">
+          <img class="first-slide logoCarousel" src="${header1}" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>Train correctly on your one's own!</h1>
@@ -81,8 +85,8 @@
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+        <div class="item logoCarousel">
+          <img class="second-slide logoCarousel" src="${header2}" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>Develop yourself according to science-based recommendations!</h1>
@@ -91,8 +95,8 @@
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+        <div class="item logoCarousel">
+          <img class="third-slide logoCarousel" src="${header3}" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>It's time to be always prepared!</h1>
@@ -113,6 +117,5 @@
     </div>	
 	<p>About</p>
 	<p>Contact</p>
-	<img src="${header1}" />
 </body>
 </html>
