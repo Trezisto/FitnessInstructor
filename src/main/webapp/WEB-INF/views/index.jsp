@@ -14,8 +14,23 @@
 <script src="${jQuery}"></script>
 <spring:url value="/js/bootstrap.min.js" var="bootstrapJS" />
 <script src="${bootstrapJS}"></script>
-<spring:url value="/js/angular.min.js" var="angularJS" />
-<script src="${angularJS}"></script>
+
+    <!-- IE required polyfill -->
+    <spring:url value="/js/es6-shim.min.js" var="es6Shim" />
+    <script src="${es6Shim}"></script>
+
+	<!-- TODO: replace with .min version in production env -->
+	<spring:url value="https://code.angularjs.org/2.0.0-beta.6/angular2-polyfills.js" var="angular2Polyfills" />
+    <script src="${angular2Polyfills}"></script>
+    <spring:url value="https://code.angularjs.org/2.0.0-beta.6/Rx.umd.js" var="Rx" />
+    <script src="${Rx}"></script>
+    <spring:url value="https://code.angularjs.org/2.0.0-beta.6/angular2-all.umd.js" var="angular2All" />
+    <script src="${angular2All}"></script>    
+    
+    <spring:url value="/js/app/app.component.js" var="appComponent" />
+    <script src='${appComponent}'></script>
+    <spring:url value="/js/app/main.js" var="mainJs" />
+    <script src='${mainJs}'></script>
 
 <spring:url value="/images/header1.png" htmlEscape="true" var="header1"/>
 <spring:url value="/images/header2.png" htmlEscape="true" var="header2"/>
@@ -115,10 +130,19 @@
         <span class="sr-only">Next</span>
       </a>
     </div>	
-    <button type="button" class="btn btn-lg btn-success">Sign up</button>
-    <button type="button" class="btn btn-lg btn-success">Log in</button>
+    <div class="form-group auth-form">
+    	<input type="email" placeholder="Email" class="form-control" />
+    	<input type="password" placeholder="Password" class="form-control" />
+    	<button type="button" class="btn btn-lg btn-success">Sign up</button>
+    </div>
+    <div class="form-group auth-form">
+    	<input type="email" placeholder="Email" class="form-control" />
+    	<input type="password" placeholder="Password" class="form-control" />
+    	<button type="button" class="btn btn-lg btn-success">Log in</button>
+    </div>
     
 	<p>About</p>
 	<p>Contact</p>
+	<my-app>Loading...</my-app>
 </body>
 </html>
