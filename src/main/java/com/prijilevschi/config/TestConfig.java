@@ -6,13 +6,27 @@ import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+/**
+ * Main configuration class for testing
+ * 
+ * @author Evgheni Prijilevschi
+ *
+ */
 @Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = { "com.prijilevschi.*" }, excludeFilters = { @Filter(type = FilterType.ANNOTATION, value = Configuration.class) })
+@EnableTransactionManagement
 public class TestConfig {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -28,7 +42,7 @@ public class TestConfig {
 
 	private Properties getJpaProperties() {
 		Properties prop = new Properties();
-		prop.put("hibernate.hbm2ddl.auto", "update");
+		prop.put("hibernate.hbm2ddl.auto", "create-drop");
 		prop.put("hibernate.format_sql", "false");
 		prop.put("hibernate.show_sql", "true");
 		prop.put("hibernate.dialect",

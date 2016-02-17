@@ -13,6 +13,12 @@ import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * JPA configuration for application.
+ * 
+ * @author Evgheni Prijilevschi
+ *
+ */
 @Configuration
 @EnableTransactionManagement
 public class PersistenceJPAConfig {

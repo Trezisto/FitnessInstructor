@@ -10,6 +10,12 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+/**
+ * Main configuration class for running application.
+ * 
+ * @author Evgheni Prijilevschi
+ *
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "com.prijilevschi.*" })
