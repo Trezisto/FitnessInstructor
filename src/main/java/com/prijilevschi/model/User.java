@@ -7,8 +7,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.AccessType;
-
 import com.prijilevschi.enums.UserRole;
 
 @Entity

@@ -6,7 +6,6 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import com.prijilevschi.dao.AbstractDAO;
 import com.prijilevschi.dao.UserDAO;
 import com.prijilevschi.model.User;
 import com.prijilevschi.utils.Utils;

@@ -39,6 +39,6 @@ public class UserServiceTest {
 	@Test
 	public void findByUserNameTest(){
 		User actualUser = userService.findByUserName(user.getName());
-		Assert.assertEquals(user, actualUser);
+		Assert.assertEquals(user.getPassword(), actualUser.getPassword());
 	}
 }
