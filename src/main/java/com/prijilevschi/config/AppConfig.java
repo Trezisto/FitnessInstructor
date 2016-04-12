@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 /**
- * Main configuration class for running application.
+ * Main configuration class for running web-application.
  * 
  * @author Evgheni Prijilevschi
  *
@@ -30,10 +32,30 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public InternalResourceViewResolver viewResolver() {
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix("/WEB-INF/views/");
-		viewResolver.setSuffix(".jsp");
-		return viewResolver;
-	}
+    public ServletContextTemplateResolver setupViewResolver(){
+	ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
+        templateResolver.setPrefix("/WEB-INF/views/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setTemplateMode("HTML5");
+
+        return templateResolver;
+    }
+
+    @Bean
+	public SpringTemplateEngine setupTempateEngine(){
+	SpringTemplateEngine springTE = new SpringTemplateEngine();
+	springTE.setTemplateResolver(setupViewResolver());
+
+	return springTE;
+    }
+
+    @Bean
+    public ThymeleafViewResolver setupTLViewResolver(){
+	ThymeleafViewResolver thymeleafVR = new ThymeleafViewResolver();
+	thymeleafVR.setCharacterEncoding("UTF-8");
+	thymeleafVR.setTemplateEngine(setupTempateEngine());
+
+	return thymeleafVR;
+    }
 }

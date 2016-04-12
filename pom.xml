@@ -20,6 +20,7 @@
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<spring.security.version>4.0.3.RELEASE</spring.security.version>
 		<hibernate.version>5.0.7.Final</hibernate.version>
+		<thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
 	</properties>
 
 	<dependencies>
@@ -127,6 +128,19 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.3</version>
+		</dependency>
+		
+		<!-- XML/XHTML/HTML5 template engine for Java -->
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>${thymeleaf.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>${thymeleaf.version}</version>
 		</dependency>
 
 		<dependency>
