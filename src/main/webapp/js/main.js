@@ -1,22 +1,23 @@
 function login(){
-	var email = $('#emailLogin');
-	var password = $('#passLogin');
-	
+	var username = $('#usernameLogin').val();
+	console.log(username);
+	var password = $('#passLogin').val();
+	console.log(password);
 	var credentials = {
-		email: email,
+		username: username,
 		password: password
 	};
-	
+	console.log(JSON.stringify(credentials));
 	$.ajax({
 		type: 'POST',
-		url: 'login',
+		url: '/login',
 		data: JSON.stringify(credentials), //what send to server
 		contentType: 'application/json',
 		success: function(data) {
-				alert('Credentials sent!');
+			console.log('Credentials sent!');
 		},
 		error:function(data,status,er) {
-			alert('error');
+			console.log('error');
 		}		
 	});
 }

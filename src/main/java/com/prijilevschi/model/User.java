@@ -1,10 +1,17 @@
 package com.prijilevschi.model;
 
+import java.util.Set;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.prijilevschi.enums.UserRole;
@@ -25,6 +32,16 @@ public class User extends AbstractNamedEntity {
 	
 	@Column(name = "is_enabled")
 	private Boolean isEnabled;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private Set<Training> trainings; 
+	
+	@ManyToOne
+	@JoinColumn(name = "trainer_id")
+	private User trainer;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trainer")
+	private Set<User> users;
 	
 	public String getPassword() {
 		return password;
@@ -50,4 +67,23 @@ public class User extends AbstractNamedEntity {
 	public void setIsEnabled(Boolean isEnabled) {
 		this.isEnabled = isEnabled;
 	}
+	public Set<Training> getTrainings() {
+		return trainings;
+	}
+	public void setTrainings(Set<Training> trainings) {
+		this.trainings = trainings;
+	}
+	public User getTrainer() {
+		return trainer;
+	}
+	public void setTrainer(User trainer) {
+		this.trainer = trainer;
+	}
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	
 }

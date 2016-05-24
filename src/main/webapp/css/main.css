@@ -20,5 +20,19 @@
 }
 
 .auth-form {
-	width: 300px
+	margin: auto;
+	width: 300px;
+    padding: 10px;
+    display: inline-block; 
+}
+
+.center {
+    margin: auto;
+    margin-top: 10px!important;
+    width: 50%;
+    padding: 10px;
+}
+
+.alignment {
+	margin-bottom: 5px;
 }

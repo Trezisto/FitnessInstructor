@@ -8,11 +8,12 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class AbstractEntity {
 	
-	private Long id;
-	
 	@Id
     @Column(name = "id", unique = true)
     @GeneratedValue
+	private Long id;
+	
+	
 	public Long getId() {
 		return id;
 	}

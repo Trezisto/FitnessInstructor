@@ -23,7 +23,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @author Evgheni Prijilevschi
  *
  */
-@Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.prijilevschi.*" }, excludeFilters = { @Filter(type = FilterType.ANNOTATION, value = Configuration.class) })
 @EnableTransactionManagement

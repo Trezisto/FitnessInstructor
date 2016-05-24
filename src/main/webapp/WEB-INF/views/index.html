@@ -9,22 +9,22 @@
 	
 	<script src="../../js/jquery-2.2.0.min.js" th:src="@{/js/jquery-2.2.0.min.js}"></script>
 	<script src="../../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>		
+	<script src="../../js/main.js" th:src="@{/js/main.js}"></script>
 	
 </head>
 <body>
-	<div th:include="templates/header :: headerContent"></div>	
-    <div class="form-group auth-form">
-    	<input type="email" placeholder="Email" class="form-control" />
-    	<input type="password" placeholder="Password" class="form-control" />
-    	<button type="button" class="btn btn-lg btn-success">Sign up</button>
-    </div>
-    <div class="form-group auth-form">
-    	<input id="emailLogin" type="email" placeholder="Email" class="form-control" />
-    	<input id="passLogin" type="password" placeholder="Password" class="form-control" />
-    	<button type="button" onclick="login()" class="btn btn-lg btn-success">Log in</button>
-    </div>
-    
-	<p>About</p>
-	<p>Contact</p>
+	<div th:include="templates/header :: headerContent"></div>
+	<div class="center">	
+	    <div class="form-group auth-form">
+	    	<input type="email" placeholder="Email" class="form-control alignment" />
+	    	<input type="password" placeholder="Password" class="form-control alignment" />
+	    	<button type="button" class="btn btn-lg btn-success">Sign up</button>
+	    </div>
+	    <div class="form-group auth-form">
+	    	<input id="usernameLogin" type="text" placeholder="Username" class="form-control alignment" />
+	    	<input id="passLogin" type="password" placeholder="Password" class="form-control alignment" />
+	    	<button type="button" onclick="login()" class="btn btn-lg btn-success">Log in</button>
+	    </div>
+	</div>
 </body>
 </html>
