@@ -36,3 +36,8 @@
 .alignment {
 	margin-bottom: 5px;
 }
+
+.centered-interface {
+	text-align: center;
+	margin-top: 50px;
+}
