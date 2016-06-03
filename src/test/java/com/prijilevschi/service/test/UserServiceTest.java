@@ -9,10 +9,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.prijilevschi.config.TestConfig;
-import com.prijilevschi.dao.UserDAO;
 import com.prijilevschi.model.User;
 import com.prijilevschi.service.UserService;
 
@@ -24,6 +24,8 @@ public class UserServiceTest {
 	private UserService userService;
 	
 	private User user;
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
 	
 	@Before
 	public void init(){
@@ -39,6 +41,7 @@ public class UserServiceTest {
 	@Test
 	public void findByUserNameTest(){
 		User actualUser = userService.findByUserName(user.getName());
+		logger.debug("User found with id: [{}], name: [{}])", actualUser.getId(), actualUser.getName());
 		Assert.assertEquals(user.getPassword(), actualUser.getPassword());
 	}
 }
